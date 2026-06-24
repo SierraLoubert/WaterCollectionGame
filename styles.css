@@ -29,7 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #2E9DF7;
     font-family: Arial, sans-serif;
 }
 
@@ -132,6 +132,11 @@ body {
     to {
         transform: translateY(600px);
     }
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
 }
 
 @media (max-width: 850px) {
