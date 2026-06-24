@@ -92,7 +92,7 @@ body {
     position: absolute;
     width: 60px;  /* increased from 40px */
     height: 60px; /* increased from 40px */
-    background-color: #0099ff;
+    background-color: #2E9DF7;
     border-radius: 50%;
     animation: dropFall linear forwards;
     transform-origin: center;
@@ -107,7 +107,7 @@ body {
 }
 
 .bad-drop {
-    background-color: #ff4444;
+    background-color: #FFC907;
 }
 
 .game-title {

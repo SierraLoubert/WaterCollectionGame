@@ -2,20 +2,101 @@
 let gameRunning = false; // Keeps track of whether game is active or not
 let dropMaker; // Will store our timer that creates drops regularly
 
+let score = 0;
+let timer = 120;
+
+let timerInterval;
+
 // Wait for button click to start the game
 document.getElementById("start-btn").addEventListener("click", startGame);
 
 function startGame() {
-  // Prevent multiple games from running at once
+
   if (gameRunning) return;
 
   gameRunning = true;
 
-  // Create new drops every second (1000 milliseconds)
-  dropMaker = setInterval(createDrop, 1000);
+  score = 0;
+  timer = 120;
+
+  document.getElementById("score").textContent = score;
+  document.getElementById("time").textContent = timer;
+
+  dropMaker = setInterval(createDrop, 800);
+
+  timerInterval = setInterval(() => {
+
+    timer--;
+
+    document.getElementById("time").textContent = timer;
+
+    if (timer <= 0) {
+      endGame();
+    }
+
+  }, 1000);
+
 }
 
 function createDrop() {
+
+  const drop = document.createElement("div");
+
+  const isBadDrop = Math.random() < 0.25;
+
+  drop.className = isBadDrop
+    ? "water-drop bad-drop"
+    : "water-drop";
+
+  const gameWidth =
+    document.getElementById("game-container").offsetWidth;
+
+  drop.style.left =
+    Math.random() * (gameWidth - 60) + "px";
+
+  drop.style.animationDuration = "4s";
+
+  drop.addEventListener("click", () => {
+
+    if (!gameRunning) return;
+
+    if (isBadDrop) {
+
+      score -= 5;
+
+      if (score < 0) score = 0;
+
+    } else {
+
+      score += 10;
+
+      if (score >= 100) {
+
+        score = 100;
+
+        document.getElementById("score").textContent = score;
+
+        winGame();
+
+        return;
+      }
+    }
+
+    document.getElementById("score").textContent = score;
+
+    drop.remove();
+
+  });
+
+  document.getElementById("game-container")
+    .appendChild(drop);
+
+  drop.addEventListener("animationend", () => {
+    drop.remove();
+  });
+
+}
+/*function createDrop() {
   // Create a new div element that will be our water drop
   const drop = document.createElement("div");
   drop.className = "water-drop";
@@ -42,4 +123,60 @@ function createDrop() {
   drop.addEventListener("animationend", () => {
     drop.remove(); // Clean up drops that weren't caught
   });
+}*/
+
+function endGame() {
+
+  gameRunning = false;
+
+  clearInterval(dropMaker);
+  clearInterval(timerInterval);
+
+  alert(
+    "Time's Up!\n\nFinal Score: " +
+    score +
+    "\n\nLooks like you have enough for one family!"
+  );
+
 }
+
+function winGame() {
+
+  gameRunning = false;
+
+  clearInterval(dropMaker);
+  clearInterval(timerInterval);
+
+  alert(
+    "Success!\n\nYou got enough clean water for a village!\n\nFinal Score: " +
+    score
+  );
+
+}
+
+//replay button
+document
+  .getElementById("restart-btn")
+  .addEventListener("click", resetGame);
+
+function resetGame() {
+
+  clearInterval(dropMaker);
+  clearInterval(timerInterval);
+
+  document.getElementById("game-container").innerHTML = "";
+
+  gameRunning = false;
+
+  score = 0;
+  timer = 120;
+
+  document.getElementById("score").textContent = score;
+  document.getElementById("time").textContent = timer;
+
+}
+
+confetti({
+  particleCount: 150,
+  spread: 90
+});
