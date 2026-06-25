@@ -7,12 +7,21 @@ let timer = 120;
 
 let timerInterval;
 
-// Wait for button click to start the game
-document.getElementById("start-btn").addEventListener("click", startGame);
+// Start button begins a new round.
+document.getElementById("start-btn").addEventListener("click", () => {
+  if (gameRunning) return;
+
+  startGame();
+});
+
+// Reset button clears the current round without starting a new one.
+document.getElementById("reset-btn").addEventListener("click", resetGame);
 
 function startGame() {
 
   if (gameRunning) return;
+
+  clearExistingDrops();
 
   gameRunning = true;
 
@@ -154,17 +163,12 @@ function winGame() {
 
 }
 
-//replay button
-document
-  .getElementById("restart-btn")
-  .addEventListener("click", resetGame);
-
 function resetGame() {
 
   clearInterval(dropMaker);
   clearInterval(timerInterval);
 
-  document.getElementById("game-container").innerHTML = "";
+  clearExistingDrops();
 
   gameRunning = false;
 
@@ -173,6 +177,15 @@ function resetGame() {
 
   document.getElementById("score").textContent = score;
   document.getElementById("time").textContent = timer;
+
+}
+
+function clearExistingDrops() {
+
+  const gameContainer = document.getElementById("game-container");
+  const drops = gameContainer.querySelectorAll(".water-drop");
+
+  drops.forEach((drop) => drop.remove());
 
 }
 

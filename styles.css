@@ -29,7 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #2E9DF7;
+    background-color: #ffffff;
     font-family: Arial, sans-serif;
 }
 
@@ -57,6 +57,24 @@ body {
     font-weight: bold;
 }
 
+.score-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
 #game-container {
     width: 800px;
     height: 600px;
@@ -68,7 +86,8 @@ body {
 }
 
 
-#start-btn {
+#start-btn,
+#reset-btn {
     padding: 8px 16px;
     background-color: #4CAF50;
     color: white;
@@ -78,7 +97,8 @@ body {
     font-size: 16px;
 }
 
-#start-btn:hover {
+#start-btn:hover,
+#reset-btn:hover {
     background-color: #45a049;
 }
 
