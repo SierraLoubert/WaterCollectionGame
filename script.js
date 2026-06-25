@@ -136,16 +136,37 @@ function createDrop() {
 
 function endGame() {
 
-  gameRunning = false;
+    gameRunning = false;
 
-  clearInterval(dropMaker);
-  clearInterval(timerInterval);
+    clearInterval(dropMaker);
+    clearInterval(timerInterval);
 
-  alert(
-    "Time's Up!\n\nFinal Score: " +
-    score +
-    "\n\nLooks like you have enough for one family!"
-  );
+    let message = "";
+
+    if (score <= 24) {
+
+        message =
+        "Time's Up!\n\n" +
+        "Final Score: " + score +
+        "\n\nYou collected enough clean water for a cup.";
+
+    } else if (score <= 74) {
+
+        message =
+        "Time's Up!\n\n" +
+        "Final Score: " + score +
+        "\n\nYou collected enough clean water for three families.";
+
+    } else {
+
+        message =
+        "Time's Up!\n\n" +
+        "Final Score: " + score +
+        "\n\nYou collected enough clean water for several families.";
+
+    }
+
+    alert(message);
 
 }
 

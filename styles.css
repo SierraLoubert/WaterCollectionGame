@@ -78,7 +78,9 @@ body {
 #game-container {
     width: 800px;
     height: 600px;
-    background-color: #e6f7ff;
+    background-image: url('../img/African_Landscape_Background.jpg');
+    background-size: cover;
+    background-position: center;
     border: 2px solid #333;
     border-radius: 8px;
     position: relative;
