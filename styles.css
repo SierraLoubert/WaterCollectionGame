@@ -53,7 +53,7 @@ body {
 
 .timer {
     flex: 0 1 auto;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -78,7 +78,7 @@ body {
 #game-container {
     width: 800px;
     height: 600px;
-    background-image: url('../img/African_Landscape_Background.jpg');
+    background-image: url('img/African_Landscape_Background.jpg');
     background-size: cover;
     background-position: center;
     border: 2px solid #333;
@@ -106,7 +106,7 @@ body {
 
 .score {
     flex: 0 1 auto;  /* Don't grow, can shrink, auto basis */
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -114,14 +114,21 @@ body {
     position: absolute;
     width: 60px;  /* increased from 40px */
     height: 60px; /* increased from 40px */
-    background-color: #2E9DF7;
-    border-radius: 50%;
+    background: transparent;
     animation: dropFall linear forwards;
     transform-origin: center;
     cursor: pointer;
-    padding: 15px;  /* Add padding for larger click area */
-    margin: -15px;  /* Offset padding to maintain visual size */
     transition: transform 0.1s ease;  /* Smooth hover effect */
+}
+
+.water-drop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #2E9DF7;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(140deg);
+    box-shadow: inset -5px -6px 0 rgba(255, 255, 255, 0.18);
 }
 
 .water-drop:hover {
@@ -129,6 +136,10 @@ body {
 }
 
 .bad-drop {
+    background: transparent;
+}
+
+.bad-drop::before {
     background-color: #FFC907;
 }
 
