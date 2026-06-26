@@ -84,13 +84,13 @@ function createDrop() {
 
     if (isBadDrop) {
 
-      score -= 5;
+      score -= 3;
 
       if (score < 0) score = 0;
 
     } else {
 
-      score += 10;
+      score += 5;
 
       if (score >= 100) {
 

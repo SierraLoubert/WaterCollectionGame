@@ -45,7 +45,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #FFFFFF;
+    background: linear-gradient(
+        180deg,
+        #8BD1CB 0%,
+        #2E9DF7 50%,
+        #8BD1CB 100%
+    );
     font-family: 'Proxima Nova', 'Avenir', Arial, sans-serif;
 }
 
