@@ -182,10 +182,12 @@ function winGame() {
     spread: 90
   });
 
-  alert(
-    "Success!\n\nYou got enough clean water for a village!\n\nFinal Score: " +
-    score
-  );
+  setTimeout(() => {
+    alert(
+      "Success!\n\nYou got enough clean water for a village!\n\nFinal Score: " +
+      score
+    );
+  }, 200);
 
 }
 
