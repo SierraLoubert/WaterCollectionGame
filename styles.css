@@ -29,7 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: #159A48;
     font-family: Arial, sans-serif;
 }
 
@@ -91,7 +91,7 @@ body {
 #start-btn,
 #reset-btn {
     padding: 8px 16px;
-    background-color: #4CAF50;
+    background-color: #2E9DF7;
     color: white;
     border: none;
     border-radius: 4px;
@@ -101,7 +101,7 @@ body {
 
 #start-btn:hover,
 #reset-btn:hover {
-    background-color: #45a049;
+    background-color:#8BD1CB;
 }
 
 .score {
@@ -177,7 +177,92 @@ body {
         width: 95vw;
     }
     
+    .score-panel {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px;
+    }
+
+    .score-group {
+        gap: 14px;
+    }
+
+    .button-group {
+        gap: 8px;
+    }
+
+    .header-logo {
+        height: 32px;
+    }
+
+    .timer,
+    .score {
+        font-size: 16px;
+    }
+
+    #start-btn,
+    #reset-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .water-drop {
+        width: 48px;
+        height: 48px;
+    }
+
     #game-container {
         height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 34px;
+    }
+
+    .game-tagline {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .score-panel {
+        padding: 6px;
+    }
+
+    .score-group {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .button-group {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-logo {
+        height: 28px;
+    }
+
+    .timer,
+    .score {
+        font-size: 14px;
+    }
+
+    #start-btn,
+    #reset-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .water-drop {
+        width: 40px;
+        height: 40px;
+    }
+
+    #game-container {
+        height: 62vh;
     }
 }

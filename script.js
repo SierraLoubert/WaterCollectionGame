@@ -177,6 +177,11 @@ function winGame() {
   clearInterval(dropMaker);
   clearInterval(timerInterval);
 
+  confetti({
+    particleCount: 150,
+    spread: 90
+  });
+
   alert(
     "Success!\n\nYou got enough clean water for a village!\n\nFinal Score: " +
     score
@@ -209,8 +214,3 @@ function clearExistingDrops() {
   drops.forEach((drop) => drop.remove());
 
 }
-
-confetti({
-  particleCount: 150,
-  spread: 90
-});
