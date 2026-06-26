@@ -194,7 +194,7 @@ function winGame() {
 
   document.getElementById("start-overlay").style.display = "flex";
   document.getElementById("overlay-message").textContent =
-    "You collected enough clean water for three families!";
+    "You collected enough clean water for whole village!";
   document.getElementById("start-btn").style.display = "none";
   document.getElementById("play-again-btn").style.display = "inline-block";
 
