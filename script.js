@@ -14,37 +14,50 @@ document.getElementById("start-btn").addEventListener("click", () => {
   startGame();
 });
 
-// Reset button clears the current round without starting a new one.
-document.getElementById("reset-btn").addEventListener("click", resetGame);
+document.getElementById("play-again-btn").addEventListener("click", () => {
+  resetGame();
+  startGame();
+});
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  resetGame();
+
+  document.getElementById("start-overlay").style.display = "flex";
+  document.getElementById("overlay-message").textContent =
+    "Collect clean water drops and avoid pollution. Reach 100 points before time runs out!";
+  document.getElementById("start-btn").style.display = "inline-block";
+  document.getElementById("play-again-btn").style.display = "none";
+});
+
+
 
 function startGame() {
 
-  if (gameRunning) return;
+    if (gameRunning) return;
 
-  clearExistingDrops();
+    document.getElementById("start-overlay").style.display = "none";
 
-  gameRunning = true;
+    gameRunning = true;
 
-  score = 0;
-  timer = 120;
+    score = 0;
+    timer = 120;
 
-  document.getElementById("score").textContent = score;
-  document.getElementById("time").textContent = timer;
-
-  dropMaker = setInterval(createDrop, 800);
-
-  timerInterval = setInterval(() => {
-
-    timer--;
-
+    document.getElementById("score").textContent = score;
     document.getElementById("time").textContent = timer;
 
-    if (timer <= 0) {
-      endGame();
-    }
+    dropMaker = setInterval(createDrop, 800);
 
-  }, 1000);
+    timerInterval = setInterval(() => {
 
+        timer--;
+
+        document.getElementById("time").textContent = timer;
+
+        if (timer <= 0) {
+            endGame();
+        }
+
+    }, 1000);
 }
 
 function createDrop() {
@@ -157,16 +170,13 @@ function endGame() {
         "Final Score: " + score +
         "\n\nYou collected enough clean water for three families.";
 
-    } else {
+    } 
 
-        message =
-        "Time's Up!\n\n" +
-        "Final Score: " + score +
-        "\n\nYou collected enough clean water for several families.";
-
-    }
-
-    alert(message);
+    document.getElementById("start-overlay").style.display = "flex";
+     document.getElementById("overlay-message").textContent =
+    "You collected enough clean water for a cup.";
+    document.getElementById("start-btn").style.display = "none";
+    document.getElementById("play-again-btn").style.display = "inline-block";
 
 }
 
@@ -182,12 +192,11 @@ function winGame() {
     spread: 90
   });
 
-  setTimeout(() => {
-    alert(
-      "Success!\n\nYou got enough clean water for a village!\n\nFinal Score: " +
-      score
-    );
-  }, 200);
+  document.getElementById("start-overlay").style.display = "flex";
+  document.getElementById("overlay-message").textContent =
+    "You collected enough clean water for three families!";
+  document.getElementById("start-btn").style.display = "none";
+  document.getElementById("play-again-btn").style.display = "inline-block";
 
 }
 
